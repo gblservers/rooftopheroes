@@ -70,13 +70,14 @@
     .point strong{display:block;margin-bottom:6px;font-size:1.35rem;letter-spacing:-.03em;}
     .point span{color:var(--muted);font-size:.92rem;}
     .hero-visual{position:relative;}
-    .hero-frame{position:relative;min-height:620px;border-radius:30px;overflow:visible;padding:20px; margin-right: -100px; border:1px solid var(--line);box-shadow:var(--shadow);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));}
+    .hero-frame{position:relative;display:flex;flex-direction:column;gap:12px;border-radius:30px;overflow:visible;padding:20px; margin-right: -100px; border:1px solid var(--line);box-shadow:var(--shadow);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));}
     .hero-image{position:absolute;inset:10px;border-radius:24px;background:linear-gradient(180deg, rgba(8,12,22,.12), rgba(8,12,22,.52)),url('https://picsum.photos/seed/roof-hero/1200/1400') center/cover no-repeat;}
     .glass{background:rgba(7,12,22,.58);border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow);backdrop-filter:blur(14px);}
     .mini-badge{padding:14px 16px;border-radius:18px;display:flex;gap:10px;align-items:flex-start;}
     .mini-badge small{display:block;color:var(--muted);font-size:.8rem;}
     .mini-badge strong{display:block;margin-top:3px;font-size:.97rem;}
-    .hero-bottom{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;display:grid;grid-template-columns:1fr 280px;gap:16px;align-items:end;}
+    .hero-top{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+    .hero-bottom{position:relative;z-index:2;}
     .hero-side-stack{display:flex;flex-direction:column;gap:12px;}
     .quote-card{padding:20px;border-radius:22px;}
     .quote-card form{display:flex;flex-direction:column;gap:10px;}
@@ -174,8 +175,7 @@
     @media (max-width:1080px){
       .hero-grid, .split, .faq-grid, .contact-grid, .finance-grid{grid-template-columns:1fr;}
       .services-grid, .process-grid, .cert-grid, .review-grid, .project-grid, .trust-grid{grid-template-columns:repeat(2, minmax(0,1fr));}
-      .hero-bottom{grid-template-columns:1fr;}
-      .hero-frame{min-height:780px}
+      .hero-frame{margin-right:0;}
     }
     @media (max-width:860px){
       .nav-links, .desktop-only{display:none !important;}
@@ -186,9 +186,10 @@
       .hero{padding-top:24px}
       .hero-copy h1{font-size:clamp(2.5rem, 13vw, 4.3rem)}
       .hero-points, .services-grid, .process-grid, .cert-grid, .review-grid, .project-grid, .trust-grid, .row-2, .quote-card .row{grid-template-columns:1fr;}
-      .hero-frame{min-height:880px;padding:16px;}
+      .hero-frame{padding:16px;margin-right:0;}
       .hero-image{inset:16px;}
-      .hero-bottom{left:16px;right:16px;bottom:16px;}
+      .hero-top{display:contents;}
+      .hero-stat{order:1;}
       .sticky-cta{display:block}
     }
   </style>
@@ -280,17 +281,20 @@
           </div>
         </div>
 
+
+
+
+
+
+
+
+
         <div class="hero-visual reveal">
           <div class="hero-frame">
             <div class="hero-image" aria-label="Recently completed Rooftop Heroes project"></div>
 
-
- <div class="hero-stat glass" style=" position: absolute; left: 52%; width: 45%;">
-                  <h4>48 hr</h4>
-                  <p>Typical estimate turnaround after on-site inspection.</p>
-                </div>
-
-<div class="hero-side-stack" style="width: 50%;">
+            <div class="hero-top">
+              <div class="hero-side-stack">
                 <div class="mini-badge glass">
                   <div>🛡️</div>
                   <div>
@@ -306,40 +310,50 @@
                     <strong>Insurance claim documentation assistance</strong>
                   </div>
                 </div>
+              </div>
 
-                
-
-
-
-<div class="hero-bottom" style="width: 100%; max-width: 100%; margin: 0 auto;">
-  <div class="quote-card glass" style="width: 100%; box-sizing: border-box;">
-    <h3>Get a fast quote</h3>
-    <p>Tell us a bit about your project and we'll be in touch within one business hour.</p>
-
-    <form id="heroLeadForm">
-      <div class="row">
-        <input type="text" name="hero_name" placeholder="Full name" required style="width: 100%; padding: 10px; margin-bottom: 10px;"/>
-        <input type="tel" name="hero_phone" placeholder="Phone number" required style="width: 100%; padding: 10px; margin-bottom: 10px;"/>
-      </div>
-
-      <div class="row">
-        <input type="email" name="hero_email" placeholder="Email address" style="width: 100%; padding: 10px; margin-bottom: 10px;"/>
-        <select name="hero_service" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-          <option value="" selected disabled>Service needed</option>
-          <option value="Roof Repair">Roof Repair</option>
-          <option value="Roof Replacement">Roof Replacement</option>
-          <option value="Storm Damage">Storm Damage</option>
-          <option value="Commercial Roofing">Commercial Roofing</option>
-          <option value="Inspection / Maintenance">Inspection / Maintenance</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-block" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Request Free Estimate</button>
-    </form>
-  </div>
-</div>
-			  
+              <div class="hero-stat glass">
+                <h4>48 hr</h4>
+                <p>Typical estimate turnaround after on-site inspection.</p>
+              </div>
             </div>
+
+            <div class="hero-bottom">
+              <div class="quote-card glass">
+                <h3>Get a fast quote</h3>
+                <p>Tell us a bit about your project and we'll be in touch within one business hour.</p>
+
+                <form id="heroLeadForm">
+                  <div class="row">
+                    <input type="text" name="hero_name" placeholder="Full name" required />
+                    <input type="tel" name="hero_phone" placeholder="Phone number" required />
+                  </div>
+
+                  <div class="row">
+                    <input type="email" name="hero_email" placeholder="Email address" />
+                    <select name="hero_service" required>
+                      <option value="" selected disabled>Service needed</option>
+                      <option value="Roof Repair">Roof Repair</option>
+                      <option value="Roof Replacement">Roof Replacement</option>
+                      <option value="Storm Damage">Storm Damage</option>
+                      <option value="Commercial Roofing">Commercial Roofing</option>
+                      <option value="Inspection / Maintenance">Inspection / Maintenance</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block">Request Free Estimate</button>
+                </form>
+              </div>
+            </div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
           </div>
         </div>
       </div>
